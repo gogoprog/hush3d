@@ -1,4 +1,4 @@
--cp src/hush
+-cp src
 -cp deps/Ash-Haxe/src
 -cs Assets/Hush
 -net-lib /opt/Unity/Editor/Data/Managed/UnityEngine.dll
@@ -7,3 +7,4 @@
 -D no-root
 -D real-position
 --macro include('hush')
+--macro include('test')

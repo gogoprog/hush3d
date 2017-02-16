@@ -20,19 +20,16 @@ class EntityWrapper extends MonoBehaviour
 @:nativeGen
 class Hush extends MonoBehaviour
 {
-    private static var engine:Engine;
+    public static var engine:Engine;
+
+    public function new()
+    {
+        super();
+    }
 
     public function Awake()
     {
         engine = new Engine();
-
-        engine.addSystem(new TestSystem(), 1);
-
-
-        var e = createEntity(GameObject.Find("Sphere"));
-
-
-        engine.addEntity(e);
     }
 
     public function Update()
@@ -40,7 +37,7 @@ class Hush extends MonoBehaviour
         engine.update(Time.deltaTime);
     }
 
-    public function createEntity(gameObject:GameObject):Entity
+    static public function createEntity(gameObject:GameObject):Entity
     {
         var e = new Entity();
 
@@ -54,5 +51,11 @@ class Hush extends MonoBehaviour
         untyped __cs__("gameObject.AddComponent<EntityWrapper>()");
 
         return e;
+    }
+
+    static public function createEntityFromPrefab(prefabName:String):Entity
+    {
+        var go = untyped __cs__("(UnityEngine.GameObject)UnityEngine.Object.Instantiate(UnityEngine.Resources.Load(prefabName))");
+        return createEntity(go);
     }
 }

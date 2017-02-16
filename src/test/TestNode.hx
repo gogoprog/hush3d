@@ -1,4 +1,4 @@
-package hush;
+package test;
 
 import ash.core.*;
 import unityengine.MeshFilter;
